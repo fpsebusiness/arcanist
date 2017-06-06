@@ -774,12 +774,12 @@ EOTEXT
     }
 
     if ($rev_status != ArcanistDifferentialRevisionStatus::ACCEPTED) {
-      $ok = phutil_console_confirm(pht(
-        "Revision '%s' has not been accepted. Continue anyway?",
-        "D{$rev_id}: {$rev_title}"));
-      if (!$ok) {
-        throw new ArcanistUserAbortException();
-      }
+//      $ok = phutil_console_confirm(pht(
+//        "Revision '%s' has not been accepted. Continue anyway?",
+//        "D{$rev_id}: {$rev_title}"));
+//      if (!$ok) {
+      throw new ArcanistUsageException("You cannot land a revision that has not been accepted.  Please wait until a reviewer has reviewed the diff.");
+//      }
     }
 
     if ($rev_auxiliary) {
